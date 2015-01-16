@@ -1,6 +1,7 @@
 package ch.n1b.leichenstein;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -44,7 +45,16 @@ public class Totengraeber implements Listener {
 
         if(e instanceof Player){
             Player player = (Player) e;
-            String line1 = player.getDisplayName();
+            String color = ChatColor.BOLD.toString();
+            if(player.getDisplayName().startsWith("n1b")){
+                color += ChatColor.RED.toString();
+            }else if(player.getDisplayName().startsWith("xzosimusx")){
+                color += ChatColor.GREEN.toString();
+            }else if(player.getDisplayName().startsWith("rePeted")){
+                color += ChatColor.LIGHT_PURPLE.toString();
+            }
+            String line1 = color + player.getDisplayName();
+
             String line2 = "[RIP] " + dformat.format(new Date());
             String line3 = "cause of death:";
             String line4 = "";
