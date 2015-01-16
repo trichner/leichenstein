@@ -17,6 +17,7 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
+import java.util.Random;
 
 /**
  * Created on 16.01.2015.
@@ -28,6 +29,8 @@ public class Totengraeber implements Listener {
     private static final int SIGN_LINES = 4;
 
     private Properties deathCauses;
+
+    private Random rand = new Random();
 
     public Totengraeber(Properties deathCauses) {
         this.deathCauses = deathCauses;
@@ -64,7 +67,7 @@ public class Totengraeber implements Listener {
         return mapped;
     }
 
-    private static void setGravestone(Location location,String... lines){
+    private void setGravestone(Location location,String... lines){
         // go up until we reach air
         Block block = location.getBlock();
         while (block.getType()!=Material.AIR){
@@ -78,7 +81,7 @@ public class Totengraeber implements Listener {
 
         block = block.getRelative(BlockFace.UP);
         block.setType(Material.SIGN_POST);
-
+        block.setData((byte) (rand.nextInt() & 0x0F));
         BlockState state = block.getState();
 
         if(state instanceof Sign){
@@ -86,6 +89,7 @@ public class Totengraeber implements Listener {
             for (int i = 0; i < Math.min(lines.length,SIGN_LINES); i++) {
                 sign.setLine(i,lines[i]);
             }
+
             sign.update(true);
         }else {
             Bukkit.getLogger().warning("Could not place deathsign.");
