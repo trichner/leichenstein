@@ -25,6 +25,8 @@ import java.util.Properties;
  */
 public class Totengraeber implements Listener {
 
+    private static final int SIGN_LINES = 4;
+
     private Properties deathCauses;
 
     public Totengraeber(Properties deathCauses) {
@@ -81,7 +83,7 @@ public class Totengraeber implements Listener {
 
         if(state instanceof Sign){
             Sign sign = (Sign) state;
-            for (int i = 0; i < Math.min(lines.length,3); i++) {
+            for (int i = 0; i < Math.min(lines.length,SIGN_LINES); i++) {
                 sign.setLine(i,lines[i]);
             }
         }else {
