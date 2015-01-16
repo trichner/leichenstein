@@ -1,0 +1,9 @@
+name: Leichenstein
+main: ch.n1b.leichenstein.Leichenstein
+version: ${project.version}
+load: startup
+authors: [AthmosPrime, n1bblonian, trichner]
+website: n1b.ch
+description: not much to say... ALL HAIL N1B!
+softdepend: []
+loadbefore: []
