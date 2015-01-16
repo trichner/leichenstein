@@ -86,6 +86,7 @@ public class Totengraeber implements Listener {
             for (int i = 0; i < Math.min(lines.length,SIGN_LINES); i++) {
                 sign.setLine(i,lines[i]);
             }
+            sign.update(true);
         }else {
             Bukkit.getLogger().warning("Could not place deathsign.");
         }
