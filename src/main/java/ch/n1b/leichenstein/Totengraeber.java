@@ -47,11 +47,13 @@ public class Totengraeber implements Listener {
             Player player = (Player) e;
             String color = ChatColor.BOLD.toString();
             if(player.getDisplayName().startsWith("n1b")){
-                color += ChatColor.RED.toString();
+                color += ChatColor.DARK_RED.toString();
             }else if(player.getDisplayName().startsWith("xzosimusx")){
                 color += ChatColor.GREEN.toString();
             }else if(player.getDisplayName().startsWith("rePeted")){
                 color += ChatColor.LIGHT_PURPLE.toString();
+            }else if(player.getDisplayName().startsWith("ronfkingswanson")){
+                color += ChatColor.DARK_PURPLE.toString();
             }
             String line1 = color + player.getDisplayName();
 
@@ -84,8 +86,8 @@ public class Totengraeber implements Listener {
             block = block.getRelative(BlockFace.UP);
         }
 
-        // go down until we reach solid ground
-        while (block.isLiquid() || block.getType()==Material.AIR){
+        // go down until we reach solid ground or reach the void
+        while ((block.isLiquid() || block.getType()==Material.AIR) && (block.getY()>0)){
             block = block.getRelative(BlockFace.DOWN);
         }
 
