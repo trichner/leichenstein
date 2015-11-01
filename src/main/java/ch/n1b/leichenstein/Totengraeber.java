@@ -12,6 +12,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.entity.EntityDeathEvent;
 
@@ -54,6 +55,8 @@ public class Totengraeber implements Listener {
                 color += ChatColor.LIGHT_PURPLE.toString();
             }else if(player.getDisplayName().startsWith("ronfkingswanson")){
                 color += ChatColor.DARK_PURPLE.toString();
+            }else if(player.getDisplayName().startsWith("AthmosPrime")){
+                color += ChatColor.YELLOW.toString();
             }
             String line1 = color + player.getDisplayName();
 
@@ -64,8 +67,11 @@ public class Totengraeber implements Listener {
             if(killer!=null){
                 line4 = killer.getDisplayName();
             }else {
-                DamageCause cause = player.getLastDamageCause().getCause();
-                line4 = deathCauseToString(cause);
+                EntityDamageEvent devent = player.getLastDamageCause();
+                if(devent!=null){
+                    DamageCause cause = devent.getCause();
+                    line4 = deathCauseToString(cause);
+                }
             }
             setGravestone(player.getLocation(),line1,line2,line3,line4);
         }
