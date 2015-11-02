@@ -57,6 +57,8 @@ public class Totengraeber implements Listener {
                 color += ChatColor.DARK_PURPLE.toString();
             }else if(player.getDisplayName().startsWith("AthmosPrime")){
                 color += ChatColor.YELLOW.toString();
+            }else if(player.getDisplayName().startsWith("mrhappyoz")){
+                color += ChatColor.LIGHT_PURPLE.toString();
             }
             String line1 = color + player.getDisplayName();
 
