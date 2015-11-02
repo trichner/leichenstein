@@ -45,6 +45,7 @@ public class Totengraeber implements Listener {
                     "xzosimusx",
                     "rePeted",
                     "ronfkingswanson",
+                    "nullspot",
                     "AthmosPrime",
                     "mrhappyoz");
 
@@ -69,7 +70,7 @@ public class Totengraeber implements Listener {
         CHAT_COLORS_CHAR = CHAT_COLORS.stream().map(new Function<ChatColor, String>() {
             @Override
             public String apply(ChatColor c) {
-                return Character.toString(c.getChar());
+                return c.toString();
             }
         }).collect(Collectors.<String>toList());
     }
@@ -90,7 +91,7 @@ public class Totengraeber implements Listener {
 
         if (e instanceof Player) {
             Player player = (Player) e;
-            String color = Character.toString(ChatColor.BOLD.getChar());
+            String color = ChatColor.BOLD.toString();
             String name = player.getDisplayName();
             if (DEVS.contains(name)) {
                 color += ChatColor.DARK_RED.toString();
