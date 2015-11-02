@@ -94,7 +94,7 @@ public class Totengraeber implements Listener {
             String name = player.getDisplayName();
             if (DEVS.contains(name)) {
                 color += ChatColor.DARK_RED.toString();
-            }else {
+            } else {
                 color += stringToColor(name);
             }
             String line1 = color + player.getDisplayName();
@@ -116,7 +116,7 @@ public class Totengraeber implements Listener {
         }
     }
 
-    private String stringToColor(String str){
+    private String stringToColor(String str) {
         int hashed = hash(str.getBytes(StandardCharsets.UTF_8));
         return CHAT_COLORS_CHAR.get(hashed % CHAT_COLORS_CHAR.size());
     }
